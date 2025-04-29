@@ -105,7 +105,7 @@ public class Stream_01_Test {
 
 		// TODO récupérer la liste de toutes les commandes qui contiennent au moins une
 		// pizza Pépéroni
-		List<Order> result = orders.stream().filter(o -> o.getPizzas().getFirst().getName().equalsIgnoreCase("Pépéroni")).toList();
+		List<Order> result = orders.stream().filter(o -> o.getPizzas().stream().anyMatch(p -> p.getName().equals("Pépéroni"))).toList();
 
 		assertThat(result, hasSize(3));
 	}
